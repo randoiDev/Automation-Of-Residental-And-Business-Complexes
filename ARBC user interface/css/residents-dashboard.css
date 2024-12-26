@@ -1,0 +1,81 @@
+body {
+    visibility: hidden;
+}
+
+.indicator {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.power-indicator {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.btn-group-vertical button {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.btn-group-vertical button:hover {
+    background-color: #0056b3 !important;
+    color: white;
+}
+
+.table-bordered {
+    border: 2px solid #007bff;
+    border-radius: 8px;
+}
+
+.table-bordered th,
+.table-bordered td {
+    text-align: left;
+    padding: 10px;
+}
+
+.table-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.form-select {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #007bff;
+}
+
+.form-select:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#submit-windows-action {
+    background-color: #007bff;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#submit-windows-action:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.alert {
+    margin-top: 15px;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.alert.d-none {
+    display: none;
+}

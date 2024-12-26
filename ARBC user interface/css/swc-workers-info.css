@@ -1,0 +1,32 @@
+/* General Styling for the Page */
+body {
+    visibility: hidden;
+    background-color: #f0f4f7;
+    font-family: Arial, sans-serif;
+}
+
+/* Container for Each Section */
+.custom-container {
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.7), rgba(255, 255, 255, 0.9));
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.custom-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Response Message Colors */
+.alert-success {
+    background-color: rgb(79, 255, 91);
+    color: white;
+}
+
+.alert-error {
+    background-color: rgb(252, 3, 65);
+    color: white;
+}

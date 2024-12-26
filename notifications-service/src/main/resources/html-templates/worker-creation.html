@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Created</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #cccccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .credentials {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border: 1px solid #ddd;
+            font-size: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .credentials strong {
+            display: block;
+            font-size: 20px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .cta {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .cta a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .cta a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to ARBC!</h1>
+        </div>
+
+        <div class="content">
+            <p>Dear %s,</p>
+            <p>Your account has been successfully created. Welcome aboard!</p>
+            <p>These are your login credentials:</p>
+
+            <div class="credentials">
+                <strong>Username: %s</strong><br>
+                <strong>Password: %s</strong>
+            </div>
+
+            <p>Keep this email private and consider changing this auto-generated password!</p>
+            <p>If you have any questions or need assistance, feel free to reach out to our support team at <a href="mailto:arbc.management@gmail.com">arbc.management@gmail.com</a>.</p>
+            <p>Best Regards,<br>Your ARBC Team</p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 ARBC</p>
+        </div>
+    </div>
+
+</body>
+</html>
+

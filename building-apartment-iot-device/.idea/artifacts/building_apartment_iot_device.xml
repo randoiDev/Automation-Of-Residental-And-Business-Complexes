@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="building-apartment-iot-device">
+    <output-path>$PROJECT_DIR$/out/artifacts/building_apartment_iot_device</output-path>
+    <root id="archive" name="building-apartment-iot-device.jar" />
+  </artifact>
+</component>

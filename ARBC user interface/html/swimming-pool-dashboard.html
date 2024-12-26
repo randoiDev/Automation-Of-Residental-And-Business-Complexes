@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swimming Pool Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/swimming-pool-dashboard.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <span id="welcome-tag" class="navbar-brand">Welcome </span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-nav">
+
+                <!-- Left-aligned navigation -->
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./sauna-dashboard.html">Sauna Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./gym-dashboard.html">Gym Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./reservations-checkout.html">Reservations checkout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./swc-workers-info.html">Profile</a>
+                    </li>
+                </ul>
+
+                <!-- Right-aligned navigation -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./worker-login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- First Section: Interior Heater -->
+    <div class="container mt-3">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <div class="row">
+                    <div class="col-md-6 text-start">
+                        <p class="indicator">Device: Interior Heater</p>
+                        <p id="interior-heater-temperature" class="indicator">Temperature: </p>
+                        <p id="interior-heater-power-value" class="indicator power-indicator">Power: </p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <div class="btn-group-vertical">
+                            <button id="interior-heater-raise-temp" class="btn btn-primary border">+</button>
+                            <button id="interior-heater-lower-temp" class="btn btn-primary border">-</button>
+                            <button id="interior-heater-power" class="btn btn-danger border">Power</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div id="message-box-1" class="alert d-none" role="alert"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Section: Ordinary Lights -->
+    <div class="container mt-3">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <div class="row">
+                    <div class="col-md-6 text-start">
+                        <p class="indicator">Device: Ordinary Lights</p>
+                        <p id="ordinary-lights-intensity" class="indicator">Intensity: </p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <div class="btn-group-vertical">
+                            <button id="ordinary-lights-raise-intensity" class="btn btn-primary border">+</button>
+                            <button id="ordinary-lights-lower-intensity" class="btn btn-primary border">-</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div id="message-box-2" class="alert d-none" role="alert"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Third Section: Roof -->
+    <div class="container mt-3">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <div class="row">
+                    <div class="col-md-6 text-start">
+                        <p class="indicator">Device: Roof</p>
+                        <p id="roof-state" class="indicator">State: </p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <div class="btn-group-vertical">
+                            <button id="open-roof" class="btn btn-primary border">Open</button>
+                            <button id="close-roof" class="btn btn-primary border">Close</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div id="message-box-3" class="alert d-none" role="alert"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Fourth Section: Water Pump -->
+        <div class="container mt-3">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <div class="row">
+                        <div class="col-md-6 text-start">
+                            <p class="indicator">Device: Water Pump</p>
+                            <p id="water-pump-state" class="indicator">State: </p>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <div class="btn-group-vertical">
+                                <button id="fill-water-pump" class="btn btn-primary border">Fill</button>
+                                <button id="empty-water-pump" class="btn btn-primary border">Empty</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div id="message-box-4" class="alert d-none" role="alert"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fifth Section: Changing Color Lights -->
+        <div class="container mt-3">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <div class="row">
+                        <div class="col-md-6 text-start">
+                            <p class="indicator">Device: Changing Color Lights</p>
+                            <p id="changing-color-lights" class="indicator">Color: </p>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <div>
+                                <select id="color" class="form-select">
+                                    <option value="BLUE">Blue</option>
+                                    <option value="RED">Red</option>
+                                    <option value="GREEN">Green</option>
+                                    <option value="PURPLE">Purple</option>
+                                    <option value="NO_COLOR">No color</option>
+                                </select>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button id="submit-change-color" class="btn btn-primary mt-3">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div id="message-box-5" class="alert d-none" role="alert"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+     <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/swimming-pool-dashboard.js"></script>
+</body>
+
+</html>
