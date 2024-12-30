@@ -42,6 +42,7 @@ ARBC system features 3 group of users as mentioned above and each one of them ca
 ### Admin
 
 **CRUD operations on residents**
+
  To create a resident account in the system, the following data must be entered:
 - Email – Must follow this regex pattern: ^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$
 - First Name – Can contain only English alphabet letters and spaces.
@@ -67,8 +68,50 @@ The system first checks whether a resident exists for the provided ID. If the re
 
 If the resident is not associated with any housing unit, they are removed from the system. A message containing the necessary details is then sent to a specific channel within the RabbitMQ broker. The notification service reads the notification from RabbitMQ and sends an email to the resident informing them that their account has been deleted.
 
+Resetting a resident's password is sometimes a necessary operation if the resident forgets their login credentials. The safest option is for the administrator to handle the password reset, as securing access to the resident's devices is critical. By clicking a button, the resident's ID is included in the HTTP request to reset the password.
 
+The final operation that the administrator can perform regarding residents is placing a veto to prevent residents from making reservations for the usage of sports and recreational center resources. The same goes as for deletion, the resident's ID is included in the HTTP request to reset the password.
 
+**CRUD operations on workers**
+
+For workers, the operations are implemented almost identically to those for residents, both on the server and in the user interface, with a few exceptions:
+
+- Account Creation – When creating an account for a sports center worker, the same fields are filled out as when creating a resident account. However, there is an additional field for the mobile phone number. The specified email is not stored in the collection; it is used only to send a message to the new worker, informing them that their account has been created. In addition to the password, a random username is also generated in the same way and format as the password. Error messages for validation issues are displayed in the same manner.
+
+- Account Deletion – The only difference is that no email is sent when deleting an account. As mentioned, admin users cannot delete each other through this user interface since they are also workers.
+
+- Account Listing – Account listing works similarly, with the exception of filtering, as accounts are now filtered by username. The only available action button is for account deletion, as there are no operations for placing vetoes or resetting passwords.
+
+**Attaching/Detaching residences to/from residents**
+
+For a resident to manage devices within a residential unit, they must first be the owner of that residence in the collection of existing residences within a complex. Specifically, their email must be listed in the document representing a residence in the collection. To assign a resident as the owner of a residence in the database, the admin user must use the panel shown in the demonstration video.
+
+From the given panel, the admin selects a resident from the list of resident emails and assigns them one or more residences selected from the residence selection menu above. First, an HTTP request is sent to the user management module to verify that a resident exists in the system for the provided email. Then, the list of submitted residence numbers is processed to check if each residence exists and whether it is occupied. If no residence exists for a given number or it is already occupied, an appropriate response is returned to the admin.
+
+Subsequently, a bulk-write operation is used to atomically modify all the documents (i.e., residences) in the collection or none at all. After the operation, a confirmation email is sent to the resident listing the residences they now own in the system.
+
+The process for revoking a resident's ownership of residences in the system is similar to the assignment process, except that the documents representing the residences are modified to set the residents_email field to null, thereby removing ownership. The email sent in this case follows the same structure but informs the resident that their ownership of the residences has been revoked.
+
+**CRUD operations on sports and wellness center resource reservation appointments**
+
+The term "Reservation appointment" in the ARBC system represents a time period during which a specific resource of the sports and recreational center can be used on a given date. Currently, the sports and recreational center is designed to include only the pool, gym, and sauna as resources.
+
+The creation of these appointments is the responsibility of the admin user, and the panel used for it is shown in the video. To create a slot, the following information is required:
+
+- Resource – At the moment, it is only possible to create slots for the sauna and gym,
+- Slot start time – The date and time when the slot begins, which must be at least 24 hours ahead of the current time,
+- Slot end time – The date and time when the slot ends, which must be chronologically after the start time, with a minimum duration of 1 hour, and
+- Maximum number of reservations – The maximum number of reservations allowed for the slot, which must have a minimum value of 3.
+
+All the aforementioned constraints are validated on the server side when the reservation appointment creation request is submitted.
+
+On the right side of this panel in the user interface, there is a table displaying existing slots. Deleting slots is not permitted if less than 4 hours remain before the start of the slot. After the start time, deleting a slot is allowed.
+
+If a slot has reservations at the time it is deleted by the admin, all residents with reservations in that slot will receive an email notification about the cancellation. An example of this email is shown in the demonstration video of resident users.
+
+### Sports and wellness center worker
+
+**Manipulating IoT devices in the center**
 
 
   
