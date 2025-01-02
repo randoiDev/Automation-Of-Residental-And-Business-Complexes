@@ -132,7 +132,7 @@ As shown in demonstration video, following parameters can be changed:
     - Purple
     - No color
   - Opening/Closing swimming pool roof
-  - Filling/Emptying water pump
+  - Filling/Emptying swimming pool
 
  **Checking in arrivals on reservations**
 
@@ -167,5 +167,21 @@ As for the process of deleting a reservation, it has several limitations:
 - Verify that a reservation exists for the provided reservation number and that the resident initiating the deletion is the owner of that reservation, and
 - The reservation cannot be deleted if less than 4 hours remain before it begins.
 
+## Future Enhancements
 
-   
+As the project progresses, planned upgrades will further enhance the system and enable the implementation of new functionalities. These upgrades will include:
+
+- The ability to add devices we want to control via the ARBC application instead of relying on predefined ones,
+- Controlling a wider range of parameters for IoT devices,
+- Higher levels of security when accessing devices on the network,
+- System-level vetoing of resident reservations for sports and recreational center resource reservation appointments,
+- New user types and modules (e.g., security workers and a security system module, cinema workers and a cinema module, etc.),
+- Personalized recommendations for parameter settings,
+- New types of residences, such as houses, etc.
+
+## License
+
+This project is open source and is released under the [Creative Commons Zero License](https://creativecommons.org/publicdomain/zero/1.0/).
+
+You are free to use, modify, and distribute this software for any purpose without any restrictions. Please refer to the [LICENSE](LICENSE) file for more details.
+
