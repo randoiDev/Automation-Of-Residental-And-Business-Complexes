@@ -96,22 +96,76 @@ The process for revoking a resident's ownership of residences in the system is s
 
 The term "Reservation appointment" in the ARBC system represents a time period during which a specific resource of the sports and recreational center can be used on a given date. Currently, the sports and recreational center is designed to include only the pool, gym, and sauna as resources.
 
-The creation of these appointments is the responsibility of the admin user, and the panel used for it is shown in the video. To create a slot, the following information is required:
+The creation of these appointments is the responsibility of the admin user, and the panel used for it is shown in the video. To create an appointment, the following information is required:
 
-- Resource – At the moment, it is only possible to create slots for the sauna and gym,
-- Slot start time – The date and time when the slot begins, which must be at least 24 hours ahead of the current time,
-- Slot end time – The date and time when the slot ends, which must be chronologically after the start time, with a minimum duration of 1 hour, and
-- Maximum number of reservations – The maximum number of reservations allowed for the slot, which must have a minimum value of 3.
+- Resource – At the moment, it is only possible to create appointments for the sauna and gym,
+- Appointment start time – The date and time when the appointment begins, which must be at least 24 hours ahead of the current time,
+- Appointment end time – The date and time when the appointment ends, which must be chronologically after the start time, with a minimum duration of 1 hour, and
+- Maximum number of reservations – The maximum number of reservations allowed for the appointment, which must have a minimum value of 3.
 
 All the aforementioned constraints are validated on the server side when the reservation appointment creation request is submitted.
 
-On the right side of this panel in the user interface, there is a table displaying existing slots. Deleting slots is not permitted if less than 4 hours remain before the start of the slot. After the start time, deleting a slot is allowed.
+On the right side of this panel in the user interface, there is a table displaying existing appointments. Deleting appointment is not permitted if less than 4 hours remain before the start of the slot. After the start time, deleting  is allowed.
 
-If a slot has reservations at the time it is deleted by the admin, all residents with reservations in that slot will receive an email notification about the cancellation. An example of this email is shown in the demonstration video of resident users.
+If a appointment has reservations at the time it is deleted by the admin, all residents with reservations in that slot will receive an email notification about the cancellation. An example of this email is shown in the demonstration video of resident users.
 
 ### Sports and wellness center worker
 
 **Manipulating IoT devices in the center**
 
+As shown in demonstration video, following parameters can be changed:
 
-  
+- Sauna
+  - Heater temperature 25-35°C
+  - Lights 0-5 volume
+- Gym
+  - Heater temperature 25-35°C
+  - Lights 0-5°C
+  - Air conditioner 15-25°C
+- Swimming pool
+  - Heater temperature 25-35°C
+  - Exterior lights 0-5 volume
+  - Changing color lights in pool:
+    - Blue
+    - Red
+    - Green
+    - Purple
+    - No color
+  - Opening/Closing swimming pool roof
+  - Filling/Emptying water pump
+
+ **Checking in arrivals on reservations**
+
+ If resident didn't show up by time the reservation appointment starts, sports and wellness center worker can mark that resident did not arrive on his/her reservation.
+
+ ### Resident
+
+ **Manipulating IoT devices in the apartment**
+
+ As shown in the demonstration video, following parameters can be changed:
+
+ - Heater temperature 25-35°C
+ - Opening/Closing windows in different rooms in the apartment
+ - Air conditioner 15-25°C
+
+**Creating reservations**
+
+In the video we can see the interface where residents can make reservations for existing appointments with a simple click of the "Create" button and view all their created reservations in the table on the right. Residents can also delete a reservation if necessary.
+
+On the server side, various limitations must be satisfied for a reservation to be created:
+
+- The resident must not have a veto on creating reservations,
+- The resident must own at least one residence, which is verified by contacting the residence management module,
+- Reservations cannot be made less than 4 hours before the appointment begins, and
+- The allowed number of reservations must not be exceeded.
+
+If the reservation is successfully created, an email is sent to the resident with details about the reservation appointment and a reservation number that uniquely identifies the owner of the reservation.
+
+As for the process of deleting a reservation, it has several limitations:
+
+- Verify that an appointment exists for the provided appointment ID,
+- Verify that a reservation exists for the provided reservation number and that the resident initiating the deletion is the owner of that reservation, and
+- The reservation cannot be deleted if less than 4 hours remain before it begins.
+
+
+   
